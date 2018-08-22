@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//Http Module 
+import { HttpClientModule } from '@angular/common/http';
+
 // routing 
 import {RouterModule,Routes} from '@angular/router';
 
@@ -26,6 +29,7 @@ import { HelpersComponent } from './helpers/helpers.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path:'Home', component:HomeComponent},
       {path:'Owners', component:OwnersComponent},
