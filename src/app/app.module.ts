@@ -15,6 +15,11 @@ import { ClientsComponent } from './clients/clients.component';
 import { BuyersComponent } from './buyers/buyers.component';
 import { TransportersComponent } from './transporters/transporters.component';
 import { HelpersComponent } from './helpers/helpers.component';
+import {ErrorComponent} from './error/error.component';
+import {FileNotFoundComponent} from './file-not-found/file-not-found.component';
+import { NoAccessComponent } from './no-access/no-access.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { HelpersComponent } from './helpers/helpers.component';
     ClientsComponent,
     BuyersComponent,
     TransportersComponent,
-    HelpersComponent
+    HelpersComponent,
+    NoAccessComponent,
+    ErrorComponent,
+    FileNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +46,9 @@ import { HelpersComponent } from './helpers/helpers.component';
       {path:'Buyers', component:BuyersComponent},
       {path:'Transporters', component:TransportersComponent},
       {path:'Helpers', component:HelpersComponent},
+      {path:'NoAccess',component:NoAccessComponent},
+      {path:'FileNotFound',component:FileNotFoundComponent},
+      {path:'Error',component:ErrorComponent},
       {path:'',redirectTo:'/Home',pathMatch:'full'},
       {path:'**',component:HomeComponent}   
      

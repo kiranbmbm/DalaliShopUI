@@ -1,7 +1,31 @@
-<p>
-  owners works!
+<div class="col-md-10">
+  <div class="jumbotron">
+<table class="table table-hover table-bordered table-responsive table-condensed">
+  <thead class="table-bordered">
 
+    <td><strong> Name </strong></td>
+    <td> <strong>Last Name </strong></td>
+    <!-- <th> EmailAdress </th>
+    <th> MobileNumber </th>
+    <th> PermanantAdress </th>
+    <th> Place </th>
+    <th> Taluq </th>
+    <th>District </th>
+    <th> Pincode </th> -->
+    <td><strong> View Button  </strong></td>
 
+  </thead>
+  <tbody>
+      <tr *ngFor="let owner of Owners">
+          <td>{{owner.FirstName}}</td>
+          <td>{{owner.LastName}}</td>
+          <td><button class="btn btn-primary">View Owner </button></td>
+      </tr>
 
-  
-</p>
+  </tbody>
+  <tfoot>
+    <tr></tr>
+  </tfoot>
+</table>
+</div>
+</div>

@@ -14,12 +14,17 @@ export class OwnersComponent implements OnInit {
 
   }
  
-  Owners :  Owner ;  
+  Owners :  any ;  
+  error : any ; 
   ngOnInit() {
  
-  this.servicesService.GetAllOwners().subscribe((owners : Owner) =>{
-    this.Owners= owners["Table"]
-    console.log(owners['Table'])
+  this.servicesService.GetAllOwners().subscribe((response) =>{
+  //  sucess path 
+    this.Owners= response.body["Table"]
+    console.log(response) ,
+    // error path 
+    error => this.error = error // error path
+    console.log(this.error) 
   } )
  
 
