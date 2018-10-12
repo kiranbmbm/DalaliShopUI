@@ -1,64 +1,68 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { APIURL } from '../constants'
 import { Observable, throwError } from 'rxjs';
 import { Owner } from '../owners/IOwners'
 import { catchError, retry, tap } from 'rxjs/operators';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
+import { Options } from 'selenium-webdriver/chrome';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
-  constructor(
-    private http: HttpClient, private router: Router
-  ) { }
+  constructor(private router: Router,
+    private http: HttpClient
+  ) {
 
+  }
 
+// ----------------get realted things -----------------------
   GetAllOwners(): Observable<HttpResponse<Owner>> {
-    debugger;
     // return this.http.get<Owner>(APIURL + "/Owners/GetAllOwners");
     return this.http.get<Owner>(APIURL + "/Owners/GetAllOwners", { observe: 'response' }).pipe(
       retry(3),
       catchError(this.handleError)
     )
-
-
-
   }
 
-  PostOwner() {
-    // return this.http.post<any>(APIURL + "/Owners/PostOwner")
+  //gets the Data irrespective of the object depending on the passed URL 
+
+  GetAnyThing(URI: string): Observable<HttpResponse<any>> {
+    // return this.http.get<Owner>(APIURL + "/Owners/GetAllOwners");
+    return this.http.get<any>(APIURL + URI, { observe: 'response' }).pipe(
+      retry(3),
+      catchError(this.handleError)
+    )
   }
 
+  // ----------------get realted things -----------------------
 
-  // error handiling 
-  private handleError(error: HttpErrorResponse) {
-
-    // if (error.status === 401) {
-    //   this.router.navigate(['NoAccess']);
-    // }
-    // else if (error.status === 404) {
-    //   this.router.navigate(['FileNotFound'])
-    // }
-    // else {
-    //   this.router.navigate(['Error'])
-    // }
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }  
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
+  //------post related things---------------
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'my-auth-token'
+    })
   };
+  PostOwner(owner: any): Observable<HttpResponse<Owner>> {
+    return this.http.post<any>(APIURL + "/Owners/PostOwner", owner, this.httpOptions)
+      .pipe(
+        tap( // Log the result or error
+          options => console.log(options),
+        ),
+              catchError(this.handleError)
+      );
+  }
+
+
+  //------post related things--------------- 
+
+
+
+
+
 
 
   //downloading the file txt file here in the service it reads the file and in the component it download  
@@ -74,4 +78,53 @@ export class ServicesService {
         )
       );
   }
+
+//downloading the file txt file here in the service it reads the file and in the component it download  
+
+// deleting the Data in the DB by the ID 
+
+DeleteOwner (id){
+  debugger;
+  return this.http.delete(APIURL+ "/Owners/DeleteOwner" + "/?Id=" + id ,this.httpOptions)
+  .pipe(
+    tap( // Log the result or error
+      data => console.log(data),
+    ),
+    catchError(this.handleError)
+  );
+}
+
+
+  // error handiling 
+  private handleError(error: HttpErrorResponse) {
+    //  navigate by URL pending 
+    // if (error.status === 401) {
+    //   // this.router.navigate(['NoAccess']);
+    //     this.router.navigateByUrl("http://localhost:4200/NoAccess");
+    // }
+    // else if (error.status === 404) {
+    //   // this.router.navigate(['FileNotFound'])
+    //   this.router.navigateByUrl("/FileNotFound");
+
+    // }
+    // else {
+    //   // this.router.navigate(['Error'])
+    //   this.router.navigateByUrl("http://localhost:4200/Error");
+
+    // }
+    if (error.error instanceof ErrorEvent) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error.message);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong,
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    // return an observable with a user-facing error message
+    return throwError(
+      'Something bad happened; please try again later.');
+  };
+  // error handiling 
 }

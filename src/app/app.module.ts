@@ -18,8 +18,15 @@ import { HelpersComponent } from './helpers/helpers.component';
 import {ErrorComponent} from './error/error.component';
 import {FileNotFoundComponent} from './file-not-found/file-not-found.component';
 import { NoAccessComponent } from './no-access/no-access.component';
+import { FiledownloadComponent } from './filedownload/filedownload.component';
 
+// toaster related 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
+// Popup modal 
+// import { ScModalModule } from 'angular-5-popup/src/app/sc/modal/sc-modal.module';
+import {NgbModule,NgbAlertModule,NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,11 +40,24 @@ import { NoAccessComponent } from './no-access/no-access.component';
     HelpersComponent,
     NoAccessComponent,
     ErrorComponent,
-    FileNotFoundComponent
+    FileNotFoundComponent,
+    FiledownloadComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    // ScModalModule ,
+    NgbPaginationModule,
+    NgbAlertModule,
+    NgbModule.forRoot(),
+    ToastrModule.forRoot(
+      {
+        timeOut: 2000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      }
+    ) ,// ToastrModule added
     RouterModule.forRoot([
       {path:'Home', component:HomeComponent},
       {path:'Owners', component:OwnersComponent},

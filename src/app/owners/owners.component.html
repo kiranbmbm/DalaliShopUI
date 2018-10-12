@@ -1,31 +1,63 @@
+
+<div class="container">
+<div class="col-md-4">
+  <div class="jumbotron1">
+      <h2 class="display-4 "><strong>Welcome {{owner.FirstName}}</strong></h2>
+  </div>
+</div>
+<div class="col-md-3">
+    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openLg(content)">Large modal</button>
+  <button class="btn btn-primary" (click)="PostOwner()">Add Owner</button>
+</div>
+<hr class="col-md-12">
 <div class="col-md-10">
   <div class="jumbotron">
-<table class="table table-hover table-bordered table-responsive table-condensed">
-  <thead class="table-bordered">
-
-    <td><strong> Name </strong></td>
-    <td> <strong>Last Name </strong></td>
-    <!-- <th> EmailAdress </th>
+    <table class="table table-hover table-bordered table-responsive table-condensed">
+      <thead class="table-bordered">
+        <td><strong> Name </strong></td>
+        <td> <strong>Last Name </strong></td>
+        <!-- <th> EmailAdress </th>
     <th> MobileNumber </th>
     <th> PermanantAdress </th>
     <th> Place </th>
     <th> Taluq </th>
     <th>District </th>
     <th> Pincode </th> -->
-    <td><strong> View Button  </strong></td>
+    <td><strong> File Download</strong></td>
+        <td><strong> View Button </strong></td>
 
-  </thead>
-  <tbody>
-      <tr *ngFor="let owner of Owners">
+      </thead>
+      <tbody>
+        <tr *ngFor="let owner of Owners">
           <td>{{owner.FirstName}}</td>
           <td>{{owner.LastName}}</td>
-          <td><button class="btn btn-primary">View Owner </button></td>
-      </tr>
+          <td>
+            <app-filedownload></app-filedownload>
+          </td>
+          <td>
+           <button (click)="DeleteOwner(this.owner.UsedId)">Delete</button>
+          </td>
+        </tr>
 
-  </tbody>
-  <tfoot>
-    <tr></tr>
-  </tfoot>
-</table>
+      </tbody>
+      <tfoot>
+        <tr></tr>
+      </tfoot>
+    </table>
+  </div>
 </div>
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

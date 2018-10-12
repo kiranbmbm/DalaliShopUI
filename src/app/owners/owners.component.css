@@ -1,3 +1,31 @@
 .table-bordered {
     border: 6px solid #DF7;
 }
+
+.jumbotron1 {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: grey;
+    text-align: left;
+   margin-bottom: 10px;
+   border-radius: 0 ;
+   width: 75% ;
+  }
+  @media screen and (max-width: 900px) and (min-width: 600px) {
+    .jumbotron {
+      padding-top: 48px;
+      padding-bottom: 48px;
+      background-color: #EDD;
+    }
+}
+
+.dark-modal .modal-content {
+    background-color: #292b2c;
+    color: white;
+  }
+  .dark-modal .close {
+    color: white;
+  }
+  .light-blue-backdrop {
+    background-color: #5cb3fd;
+  }
