@@ -36,8 +36,8 @@ export class OwnersComponent implements OnInit {
     Taluq: "Naragunda",
     District: "Gadag",
     Pincode: 582116,
-    FingerPrint: ""
-
+    FingerPrint: "" , 
+    test: ""
 
 
   }
