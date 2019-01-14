@@ -3,19 +3,31 @@ import { ServicesService } from '../services/services.service';
 import { Owner } from '../owners/IOwners';
 import { ToastrService } from 'ngx-toastr';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgbModule,NgbAlertModule,NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+//import { NgbModule, NgbAlertModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 
+// Info Needed for the Coding 
+
+
+// this.toastr.success("Success", 'Title');
+// this.toastr.info("Info");
+// this.toastr.warning("Warning");
+// this.toastr.error("Error");
+
+
+// Info Needed for the Coding 
 @Component({
   selector: 'app-owners',
   templateUrl: './owners.component.html',
   styleUrls: ['./owners.component.css']
 })
+
 export class OwnersComponent implements OnInit {
 
-  constructor( private servicesService: ServicesService,
-               private toastr: ToastrService,
-                private modalService: NgbModule) {
+  constructor(private servicesService: ServicesService,
+    private toastr: ToastrService
+   // private modalService: NgbModule
+   ) {
 
   }
 
@@ -24,7 +36,7 @@ export class OwnersComponent implements OnInit {
 
   owner = {
 
-    FirstName: "Deepaksa",
+    FirstName: "Deepaksa1",
     MiddleName: "Basavaraj",
     LastName: "Harakatti",
     CreatedBy: "",
@@ -36,7 +48,7 @@ export class OwnersComponent implements OnInit {
     Taluq: "Naragunda",
     District: "Gadag",
     Pincode: 582116,
-    FingerPrint: "" , 
+    FingerPrint: "",
     test: ""
 
 
@@ -77,15 +89,13 @@ export class OwnersComponent implements OnInit {
         // sucess path 
         this.Owners = response.body["Table"]
         this.error = response.body["Table1"]
-        // this.toastr.success("Success", 'Title');
-        // this.toastr.info("Info");
-        // this.toastr.warning("Warning");
-        // this.toastr.error("Error");
-        console.log(response)
-        console.log(this.error),
+
+        // console.log(response)
+        // console.log(this.error)
+        ,
 
           // error path 
-         error => this.error = error // error path
+          error => this.error = error // error path
       }
     )
 
@@ -96,7 +106,8 @@ export class OwnersComponent implements OnInit {
     debugger;
     this.servicesService.PostOwner(this.owner).subscribe(
       //  owner => this.Owners.push(this.owner)
-      owner =>{ this.GetAllOwners() ;
+      owner => {
+        this.GetAllOwners();
         this.toastr.success("Owner Added Successfully", 'Success');
       }
     )
@@ -106,7 +117,7 @@ export class OwnersComponent implements OnInit {
     debugger;
     this.servicesService.DeleteOwner(id).subscribe(
       owner => {
-        this.GetAllOwners() ;
+        this.GetAllOwners();
         this.toastr.success("Owner Deleted Successfully", 'Deleted');
       }
     )

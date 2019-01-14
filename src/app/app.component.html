@@ -1,51 +1,52 @@
 <div style="text-align:center">
 
-        <header>
+  <header>
 
-                <nav class="navbar navbar-inverse">
-                  <div class="container-fluid">
-                    <div class="navbar-header">
-                      <a class="navbar-brand"  routerLink="/Home" routerLinkActive="active">ONLINEDALALISHOP</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                      <li >
-                        <a routerLink="/Owners">Owners</a>
-                      </li>
-                      <li>
-                        <a routerLink="/Clients">Clients</a>
-                      </li>
-                      <li>
-                        <a routerLink="/Vendors">Vendors</a>
-                      </li>
-                      <li>
-                        <a routerLink="/Transporters">Transporters</a>
-                      </li>
-                      <li>
-                        <a routerLink="/Buyers">Buyers</a>
-                      </li>
-                      <li>
-                        <a routerLink="/Helpers">Helpers</a>
-                      </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                      <li>
-                        <a href="#">
-                          <span class="glyphicon glyphicon-user"></span> Sign Up</a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                      </li>
-                    </ul>
-                  </div>
-                </nav>
-                <router-outlet></router-outlet>
-              </header>
-              <footer>
-                    @CopyRight Kiran
-                  </footer>
-    <!-- <app-home></app-home> -->
- 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+      <div class="navbar-header">
+        <a class="navbar-brand" routerLink="/Home" routerLinkActive="active">ONLINEDALALISHOP</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/Owners">Owners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Clients">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Vendors">Vendors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Transporters">Transporters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Buyers">Buyers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Helpers">Helpers</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a  class="nav-link" href="#">
+              <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class="glyphicon glyphicon-log-in"></span> Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+  </header>
+  <footer>
+      <div class="jumbotron" style="margin-bottom:0">
+          <p>  @CopyRight Kiran</p>
+        </div>
+  </footer>
+  <!-- <app-home></app-home> -->
+
 </div>
-
-

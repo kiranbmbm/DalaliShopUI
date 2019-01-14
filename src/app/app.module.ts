@@ -28,6 +28,10 @@ import { ToastrModule } from 'ngx-toastr';
 // import { ScModalModule } from 'angular-5-popup/src/app/sc/modal/sc-modal.module';
 import {NgbModule,NgbAlertModule,NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
+// HTML Carsolue 
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +48,8 @@ import {NgbModule,NgbAlertModule,NgbPaginationModule} from '@ng-bootstrap/ng-boo
     FiledownloadComponent
   ],
   imports: [
+    // for carssolue
+    MDBBootstrapModule.forRoot(),
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule, // required animations module
@@ -75,6 +81,7 @@ import {NgbModule,NgbAlertModule,NgbPaginationModule} from '@ng-bootstrap/ng-boo
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule { }
